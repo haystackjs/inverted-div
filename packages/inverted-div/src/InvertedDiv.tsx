@@ -145,7 +145,7 @@ export const InvertedDiv = React.memo(React.forwardRef<InvertedDivInstance, Inve
             }
 
             // Apply
-            scrollTop.current = scrollTop.current + delta;
+            scrollTop.current = outerDiv.scrollTop + delta;
             outerDiv.scrollTop = scrollTop.current;
 
             // Save Values
@@ -212,7 +212,7 @@ export const InvertedDiv = React.memo(React.forwardRef<InvertedDivInstance, Inve
             }
 
             // Apply changes
-            scrollTop.current = scrollTop.current + delta;
+            scrollTop.current = outerDiv.scrollTop + delta;
             outerDiv.scrollTop = scrollTop.current;
         });
         childObserver.observe(innerDiv, { childList: true });

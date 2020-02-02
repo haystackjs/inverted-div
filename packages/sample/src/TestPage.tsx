@@ -5,8 +5,8 @@ import { InvertedDivInstance } from 'inverted-div/src/InvertedDiv';
 
 export const TestPage = React.memo(() => {
 
-    const [topCount, setTopCount] = React.useState(5);
-    const [bottomCount, setBottomCount] = React.useState(5);
+    const [topCount, setTopCount] = React.useState(20);
+    const [bottomCount, setBottomCount] = React.useState(20);
     const [zeroHeight, setZeroHeight] = React.useState(100);
     const ref = React.useRef<InvertedDivInstance>(null);
 
