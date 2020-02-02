@@ -1,3 +1,1 @@
-// Put main dev page
-
-export const NAME = 'inverted-div';
+export { InvertedDiv } from './InvertedDiv';
