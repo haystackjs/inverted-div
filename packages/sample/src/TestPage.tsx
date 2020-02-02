@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { XView } from 'react-mental';
 import { InvertedDiv } from 'inverted-div';
+import { InvertedDivInstance } from 'inverted-div/src/InvertedDiv';
 
 export const TestPage = React.memo(() => {
 
     const [topCount, setTopCount] = React.useState(5);
     const [bottomCount, setBottomCount] = React.useState(5);
     const [zeroHeight, setZeroHeight] = React.useState(100);
+    const ref = React.useRef<InvertedDivInstance>(null);
 
     let items: any[] = [];
     for (let i = -topCount; i < bottomCount; i++) {
@@ -49,15 +51,18 @@ export const TestPage = React.memo(() => {
                     </XView>
 
                     <XView flexDirection="row" backgroundColor="#9E9E9E" height={48} alignItems="center" justifyContent="center">
-                        <button onClick={() => setZeroHeight(Math.ceil(Math.random() * 200) + 20)}>Randomize Zero Height</button>
                         <button onClick={() => setTopCount((s) => s + 1)}>Add Top</button>
                         <button onClick={() => setTopCount((s) => s - 1)}>Remove Top</button>
                         <button onClick={() => setBottomCount((s) => s + 1)}>Add Bottom</button>
                         <button onClick={() => setBottomCount((s) => s - 1)}>Remove Bottom</button>
                     </XView>
+                    <XView flexDirection="row" backgroundColor="#9E9E9E" height={48} alignItems="center" justifyContent="center">
+                        <button onClick={() => setZeroHeight(Math.ceil(Math.random() * 200) + 20)}>Randomize Zero Height</button>
+                        <button onClick={() => ref.current!.scrollToBottom()}>Scroll to Bottom</button>
+                    </XView>
 
                     <XView flexDirection="column" backgroundColor="#E0E0E0" flexGrow={1} flexShrink={1} flexBasis={0} minHeight={0}>
-                        <InvertedDiv>
+                        <InvertedDiv ref={ref}>
                             {items}
                         </InvertedDiv>
                     </XView>
